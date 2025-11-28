@@ -4,9 +4,12 @@ require_once __DIR__ . '/../app/pdo.php';
 require_once __DIR__ . '/../app/utils.php';
 require_once __DIR__ . '/../app/auth.php';
 
+// Nos aseguramos de que el usuario haya iniciado sesión
+obligar_login()
+
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
         <title>Planificacion De Inventario</title>
@@ -15,22 +18,10 @@ require_once __DIR__ . '/../app/auth.php';
                 font-family: Arial, sans-serif;
                 padding: 2rem;
             }
-            .success {
-                color: green;  
-            }
         </style>
     </head>
     <body>
-        <h1>Gestion de Inventario</h1>
-        <p>
-        <!-- el echo e() es mostrar texto seguro si se cargan las utilidades -->
-        <?php 
-        echo e("sistema de inventario iniciado correctamente");
-        ?>
-        </p>
-        <!-- Verificar la conexión a la base de datos -->
-        <?php if (isset($pdo)): ?>
-            <p style="color: green;">Conexión a la base de datos exitosa.</p>
-        <?php endif; ?>
+        <h1>Bienvenido, <?= e($_SESSION['username']) ?> a la Planificacion De Inventario</h1>
+        <p>Has iniciado sesión correctamente.</p>
     </body>
 </html>
